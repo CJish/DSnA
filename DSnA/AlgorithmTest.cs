@@ -21,12 +21,12 @@ namespace DSnA
             int[] mergeArray = (int[])bubbleArray.Clone();
 
             Stopwatch stopwatch = Stopwatch.StartNew();
-            BubbleSortTest.BubbleSort(bubbleArray);
+            BubbleSorter.BubbleSort(bubbleArray);
             stopwatch.Stop();
             Console.WriteLine($"Bubble sort time: {stopwatch.ElapsedTicks} ticks");
 
             stopwatch.Restart();
-            HeapSortTest.HeapSort(heapArray);
+            HeapSorter.HeapSort(heapArray);
             stopwatch.Stop();
             Console.WriteLine($"Heap sort time: {stopwatch.ElapsedTicks} ticks");
 
@@ -36,7 +36,7 @@ namespace DSnA
             Console.WriteLine($"Insertion sort time: {stopwatch.ElapsedTicks} ticks");
 
             stopwatch.Restart();
-            MergeSortTest.MergeSort(mergeArray);
+            MergeSorter.MergeSort(mergeArray);
             stopwatch.Stop();
             Console.WriteLine($"Merge sort time: {stopwatch.ElapsedTicks} ticks");
         }
@@ -52,7 +52,7 @@ namespace DSnA
 
             Console.Write("\nSorting prices using Bubble Sort: ");
             stopwatch.Start();
-            BubbleSortTest.BubbleSort(bubblePrices);
+            BubbleSorter.BubbleSort(bubblePrices);
             stopwatch.Stop();
             Console.WriteLine($"{stopwatch.ElapsedTicks} ticks");
             Console.WriteLine("Five Cheapest Prices after Bubble Sort:");
@@ -60,7 +60,7 @@ namespace DSnA
 
             Console.Write("\nSorting prices using Heap Sort: ");
             stopwatch.Restart();
-            HeapSortTest.HeapSort(heapPrices);
+            HeapSorter.HeapSort(heapPrices);
             stopwatch.Stop();
             Console.WriteLine($"{stopwatch.ElapsedTicks} ticks");
             Console.WriteLine("Five Cheapest Prices after Heap Sort:");
@@ -76,7 +76,7 @@ namespace DSnA
 
             Console.Write("\nSorting prices using Merge Sort: ");
             stopwatch.Restart();
-            MergeSortTest.MergeSort(heapPrices);
+            MergeSorter.MergeSort(heapPrices);
             stopwatch.Stop();
             Console.WriteLine($"{stopwatch.ElapsedTicks} ticks");
             Console.WriteLine("Five Cheapest Prices after Merge Sort:");

@@ -17,12 +17,12 @@ namespace DSnA
 
             int[] array = GenerateRandomArray(size);
 
-            BinaryTreeTest bst = new BinaryTreeTest();
+            BinarySearchTree bst = new BinarySearchTree();
             foreach (int value in array)
             {
                 bst.Insert(value);
             }
-            SinglyLinkedListTest sll = new SinglyLinkedListTest();
+            SinglyLinkedList sll = new SinglyLinkedList();
             for (int i = 0; i < array.Length; i++)
                 sll.InsertFirst(array[i]);
 
@@ -52,11 +52,11 @@ namespace DSnA
 
             int[] studentIDs = GenerateRandomArray(numberOfStudents);
 
-            BinaryTreeTest studentTree = new BinaryTreeTest();
+            BinarySearchTree studentTree = new BinarySearchTree();
             foreach (int id in studentIDs)
                 studentTree.Insert(id);
 
-            SinglyLinkedListTest sll = new SinglyLinkedListTest();
+            SinglyLinkedList sll = new SinglyLinkedList();
             for (int i = 0; i < studentIDs.Length; i++)
                 sll.InsertFirst(studentIDs[i]);
 

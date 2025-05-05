@@ -14,7 +14,7 @@ namespace DSnA
     {
         private int[] arr;
         private List<int> li;
-        private SinglyLinkedListTest sll;
+        private SinglyLinkedList sll;
         /*
         [GlobalSetup]
         public void Setup()
