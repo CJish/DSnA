@@ -1,3 +1,4 @@
+
 ﻿namespace DSnA.Algorithms
 {
     // Riley contributed this code
@@ -5,6 +6,7 @@
     {
         public static void BubbleSort(int[] arr)
         {
+
             int upper = arr.Length;
             for (int outer = upper - 1; outer >= 1; outer--)
             {
@@ -20,6 +22,8 @@
 
         static void Swap(ref int a, ref int b)
         {
+
+
             int temp = a;
             a = b;
             b = temp;

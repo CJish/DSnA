@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace DSnA.Algorithms
 {
+
+
     public class MergeSorter
     { // Dominic's code
         public static int[] MergeSort(int[] arr)
@@ -23,6 +25,7 @@ namespace DSnA.Algorithms
             int[] sortedArray = Merge(MergeSort(arrLeft), MergeSort(arrRight));
             return sortedArray;
         }
+
         private static int[] Merge(int[] arrLeft, int[] arrRight)
         {
             int[] arr = new int[arrLeft.Length + arrRight.Length];

@@ -111,6 +111,7 @@ namespace DSnA.DataStructures
         public bool Search(object a)
         {
             Node? temp = root;
+
             while (temp != null)
             {
                 if (temp.Data.Equals(a))
@@ -118,6 +119,7 @@ namespace DSnA.DataStructures
                 temp = temp.Next;
             }
             return false;
+
         }
 
         public int Count()
@@ -191,6 +193,12 @@ namespace DSnA.DataStructures
                 toBeInserted.Next = insertAfterThis.Next;
                 insertAfterThis.Next = toBeInserted;
             }
+        }
+
+        public void Useless()
+        {
+            Console.WriteLine("This does nothing. " +
+                "Delete or modify, then save, to enable git pushes.");
         }
     }
 }

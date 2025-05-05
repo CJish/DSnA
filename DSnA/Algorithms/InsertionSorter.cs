@@ -46,6 +46,7 @@ namespace DSnA.Algorithms
                 }
 
                 List<int> li = arr.ToList();
+
                 DataStructures.SinglyLinkedList sll = DataStructures.SinglyLinkedList.CreateListFromArray(arr);
 
                 watch.Start();
@@ -86,7 +87,6 @@ namespace DSnA.Algorithms
             Console.WriteLine($"\t\tSINGLY LINKED LIST: {sllAvg} ticks");
         }
 
-        [Benchmark]
         public static void InsertionSortList(List<int> list)
         {
             for (int i = 1; i < list.Count; i++)
@@ -102,8 +102,9 @@ namespace DSnA.Algorithms
             }
         }
 
-        //[Benchmark]
-        
+
+
+
         // [Benchmark]
         // SLL = Singly Linked List
         public static void InsertionSortSLL(DataStructures.SinglyLinkedList sll)
@@ -135,6 +136,7 @@ namespace DSnA.Algorithms
                 else
                 {
                     DataStructures.SinglyLinkedList.Node temp = sorted;
+
                     while (temp.Next != null && Compare(temp.Next.Data, current.Data) < 0)
                     {
                         temp = temp.Next;
@@ -148,6 +150,7 @@ namespace DSnA.Algorithms
             }
 
             sll.First = sorted;
+
             //Console.WriteLine("Finished sorting");
         }
 

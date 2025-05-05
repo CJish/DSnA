@@ -1,19 +1,32 @@
+
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 ﻿namespace DSnA.DataStructures
 {// Riley contributed this code
-    public class Node
+
     {
         public int Value;
         public Node Left, Right;
 
         public Node(int value)
+
         {
             Value = value;
             Left = Right = null;
         }
     }
-    public class BinarySearchTree
+
+    public class BinaryTreeTest
     {
-        private Node root;
+        private BSNode root;
+
+
+
         private Random random = new Random();
 
         public void Insert(int value)
@@ -21,14 +34,23 @@
             root = InsertRecursive(root, value);
         }
 
-        private Node InsertRecursive(Node node, int value)
+
+        private BSNode InsertRecursive(BSNode node, int value)
         {
             if (node == null)
-                return new Node(value);
+            {
+                return new BSNode(value);
+            }
             if (value < node.Value)
+            {
                 node.Left = InsertRecursive(node.Left, value);
+            }
             else
+            {
                 node.Right = InsertRecursive(node.Right, value);
+            }
+
+
             return node;
         }
 
@@ -37,16 +59,27 @@
             return SearchRecursive(root, value);
         }
 
-        private bool SearchRecursive(Node node, int value)
+
+        private bool SearchRecursive(BSNode node, int value)
         {
             if (node == null)
+            {
                 return false;
+            }
             if (value == node.Value)
+            {
                 return true;
+            }
             else if (value < node.Value)
+            {
                 return SearchRecursive(node.Left, value);
+            }
             else
+            {
                 return SearchRecursive(node.Right, value);
+            }
+
+
         }
     }
 }
