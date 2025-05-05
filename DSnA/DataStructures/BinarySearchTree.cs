@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -5,15 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSnA.DataStructures
-{
-    // Riley contributed this code
-    public class BSNode
+﻿namespace DSnA.DataStructures
+{// Riley contributed this code
+
     {
         public int Value;
-        public BSNode Left, Right;
+        public Node Left, Right;
 
-        public BSNode(int value)
+        public Node(int value)
+
         {
             Value = value;
             Left = Right = null;
@@ -23,12 +24,16 @@ namespace DSnA.DataStructures
     public class BinaryTreeTest
     {
         private BSNode root;
+
+
+
         private Random random = new Random();
 
         public void Insert(int value)
         {
             root = InsertRecursive(root, value);
         }
+
 
         private BSNode InsertRecursive(BSNode node, int value)
         {
@@ -44,6 +49,8 @@ namespace DSnA.DataStructures
             {
                 node.Right = InsertRecursive(node.Right, value);
             }
+
+
             return node;
         }
 
@@ -51,6 +58,7 @@ namespace DSnA.DataStructures
         {
             return SearchRecursive(root, value);
         }
+
 
         private bool SearchRecursive(BSNode node, int value)
         {
@@ -70,6 +78,8 @@ namespace DSnA.DataStructures
             {
                 return SearchRecursive(node.Right, value);
             }
+
+
         }
     }
 }

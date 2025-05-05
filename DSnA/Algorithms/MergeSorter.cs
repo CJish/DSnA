@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace DSnA.Algorithms
 {
-    public class MergeSortTest
+
+
+    public class MergeSorter
     { // Dominic's code
         public static int[] MergeSort(int[] arr)
         {

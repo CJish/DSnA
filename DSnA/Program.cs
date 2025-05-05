@@ -9,43 +9,46 @@ namespace DSnA
     {
         static void Main(string[] args)
         {
-            CompareAll.CompareAllSorts(100, 100000);
+            Console.WriteLine("Algorithm Performance ---------------------------\n");
+            CompareAll.CompareAllSorts(10, 1000);
+            Console.WriteLine();
+            CompareAll.CompareAllSorts(10, 5000);
+            Console.WriteLine();
+            CompareAll.CompareAllSorts(10, 20000);
 
+            Console.WriteLine("\nAlgorithm Application -------------------------\n");
+            AlgorithmTest.Application(200);
 
+            Console.WriteLine("\nData Structures Performance -------------------\n");
+            CompareAll.CompareAllSearch(10, 1000);
+            Console.WriteLine();
+            CompareAll.CompareAllSearch(10, 5000);
+            Console.WriteLine();
+            CompareAll.CompareAllSearch(10, 20000);
 
-
-
-
-
-
-
-
-            //// Riley contributed the code below this line
-            //Console.WriteLine("Algorithms Performance Test\n");
-            //AlgorithmTest.TestRun(10000);
-            //AlgorithmTest.TestRun(20000);
-
-            //Console.WriteLine("\nReal World Application\n");
-            //AlgorithmTest.RealWorldApplication();
-
-            //Console.WriteLine("Data Structures Performance Test\n");
-            //BinarySearchTreeTest.TestRun(10000);
-            //BinarySearchTreeTest.TestRun(20000);
-
-            //Console.WriteLine("\nReal World Application\n");
-            //BinarySearchTreeTest.RealWorldApplication();
-
-            /* The method InsertionSortSLL() isn't working properly with
-             * the benchmark testing. It keeps throwing up error 
-             * System.ArgumentException: Objects are not comparable
-             * even though the method itself properly sorts all of the 
-             * Singly Linked Lists I've thrown at it.
-             * 
-             * Uncomment the var summary = BenchmarkRunner line and all of 
-             * the methods with [Benchmark] throughout the classes to run the benchmark
-             */
-
-            //var summary = BenchmarkRunner.Run<AlgorithmsBenchmarks>();
+            Console.WriteLine("\nData Structures Application -------------------\n");
+            DataStructuresTest.Application(50);
+        }
+        public static int[] GenerateRandomArray(int size)
+        {
+            Random random = new Random();
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++)
+            {
+                array[i] = random.Next(1000, 9999);
+            }
+            return array;
+        }
+        public static bool LinearSearch(int[] array, int key)
+        {
+            foreach (int value in array)
+            {
+                if (value == key)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

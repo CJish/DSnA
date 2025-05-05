@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DSnA.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,25 +22,12 @@ namespace DSnA
             double heapArrTicks = 0;
             double mergeArrTicks = 0;
 
-            int[] insertionArrTimes = new int[size];
-            int[] bubbleArrTimes = new int[size];
-            int[] heapArrTimes = new int[size];
-            int[] mergeArrTimes = new int[size];
-
             for (int i = 0; i < iterations; i++)
             {
-                int[] insertionArr = new int[size];
-                for (int j = 0; j < size; j++ )
-                {
-                    insertionArr[j] = rand.Next(size);
-                }
-
+                int[] insertionArr = Program.GenerateRandomArray(size);
                 int[] bubbleArr = (int[])insertionArr.Clone();
                 int[] heapArr = (int[])insertionArr.Clone();
                 int[] mergeArr = (int[])insertionArr.Clone();
-
-                //List<int> li = insertionArr.ToList();
-                //SinglyLinkedList sll = SinglyLinkedList.CreateListFromArray(insertionArr);
 
                 watch.Start();
                 Algorithms.InsertionSortTest.InsertionSortArray(insertionArr);
@@ -49,39 +37,25 @@ namespace DSnA
                 watch.Reset();
 
                 watch.Start();
-                Algorithms.BubbleSortTest.BubbleSort(bubbleArr);
+                Algorithms.BubbleSorter.BubbleSort(bubbleArr);
                 watch.Stop();
                 bubbleArrTicks += watch.ElapsedTicks;
                 bubbleArrTimes[i] = Convert.ToInt32(watch.ElapsedTicks);
                 watch.Reset();
 
                 watch.Start();
-                Algorithms.HeapSortTest.HeapSort(heapArr);
+                Algorithms.HeapSorter.HeapSort(heapArr);
                 watch.Stop();
                 heapArrTimes[i] = Convert.ToInt32(watch.ElapsedTicks);
                 heapArrTicks += watch.ElapsedTicks;
                 watch.Reset();
 
                 watch.Start();
-                Algorithms.MergeSortTest.MergeSort(mergeArr);
+  
+                Algorithms.MergeSorter.MergeSort(mergeArr);
                 watch.Stop();
-                mergeArrTimes[i] = Convert.ToInt32(watch.ElapsedTicks);
                 mergeArrTicks += watch.ElapsedTicks;
                 watch.Reset();
-
-                //watch.Start();
-                //InsertionSort.InsertionSortList(li);
-                //watch.Stop();
-                //insertionLiTicks += watch.ElapsedTicks;
-                //watch.Reset();
-
-                //SinglyLinkedList.Print(sll);
-                //Console.WriteLine("\n");
-                //watch.Start();
-                //InsertionSort.InsertionSortSLL(sll);
-                //watch.Stop();
-                //insertionSllTicks += watch.ElapsedTicks;
-                //watch.Reset();
             }
 
             Algorithms.HeapSortTest.HeapSort(insertionArrTimes);
@@ -141,8 +115,53 @@ namespace DSnA
                 i++;
             }
 
+
             return a[i];
         }
+        public static void CompareAllSearch(int iterations, int size)
+        {
+            Stopwatch sw = new Stopwatch();
+            Random rand = new Random();
 
+            double arrTicks = 0;
+            double BSTTicks = 0;
+            double SLLTicks = 0;
+
+            for (int j = 0; j < iterations; j++)
+            {
+                int[] array = Program.GenerateRandomArray(size);
+
+                BinarySearchTree bst = new BinarySearchTree();
+                foreach (int value in array)
+                {
+                    bst.Insert(value);
+                }
+                SinglyLinkedList sll = new SinglyLinkedList();
+                for (int i = 0; i < array.Length; i++)
+                    sll.InsertFirst(array[i]);
+
+                Random random = new Random();
+                int target = array[random.Next(array.Length)];
+
+                sw.Start();
+                Program.LinearSearch(array, target);
+                sw.Stop();
+                arrTicks += sw.ElapsedTicks;
+
+                sw.Restart();
+                bst.Search(target);
+                sw.Stop();
+                BSTTicks += sw.ElapsedTicks;
+
+                sw.Restart();
+                sll.Search(target);
+                sw.Stop();
+                SLLTicks += sw.ElapsedTicks;
+            }
+            Console.WriteLine($"AVERAGE time to search {size} numbers with: ");
+            Console.WriteLine($"\t\tARRAY: {arrTicks / iterations} ticks");
+            Console.WriteLine($"\t\tBST: {BSTTicks / iterations} ticks");
+            Console.WriteLine($"\t\tSLL: {SLLTicks / iterations} ticks");
+        }
     }
 }

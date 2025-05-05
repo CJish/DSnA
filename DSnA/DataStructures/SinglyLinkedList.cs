@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DSnA.DataStructures
 {
     // contributed by Chris
-    public class SinglyLinkedListTest
+    public class SinglyLinkedList
     {
 
         public class Node
@@ -43,20 +43,18 @@ namespace DSnA.DataStructures
             }
         }
 
-        public static SinglyLinkedListTest CreateListFromArray(int[] arr)
+        public static SinglyLinkedList CreateListFromArray(int[] arr)
         {
-            SinglyLinkedListTest sll = new SinglyLinkedListTest();
+            SinglyLinkedList sll = new SinglyLinkedList();
             foreach (var item in arr.Reverse())  // Reverse to insert at the beginning
-            {
                 sll.InsertFirst(item);
-            }
             return sll;
         }
 
-        public static SinglyLinkedListTest CreateRandSLL(int size, int range)
+        public static SinglyLinkedList CreateRandSLL(int size, int range)
         {
             Random rand = new Random();
-            SinglyLinkedListTest list = new SinglyLinkedListTest();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             if (size <= 0) return list;
 
@@ -73,7 +71,7 @@ namespace DSnA.DataStructures
             return list;
         }
 
-        public static void Print(SinglyLinkedListTest sll)
+        public static void Print(SinglyLinkedList sll)
         {
             if (sll.IsEmpty()) { Console.WriteLine("List is empty"); return; }
             Node temp = sll.root;
@@ -113,14 +111,15 @@ namespace DSnA.DataStructures
         public bool Search(object a)
         {
             Node? temp = root;
-            bool found = false;
+
             while (temp != null)
             {
-                if (temp.Data != a)
-                    found = true;
+                if (temp.Data.Equals(a))
+                    return true;
                 temp = temp.Next;
             }
-            return found;
+            return false;
+
         }
 
         public int Count()
