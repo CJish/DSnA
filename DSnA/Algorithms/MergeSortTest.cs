@@ -23,6 +23,7 @@ namespace DSnA.Algorithms
             int[] sortedArray = Merge(MergeSort(arrLeft), MergeSort(arrRight));
             return sortedArray;
         }
+
         private static int[] Merge(int[] arrLeft, int[] arrRight)
         {
             int[] arr = new int[arrLeft.Length + arrRight.Length];

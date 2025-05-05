@@ -86,7 +86,7 @@ namespace DSnA.Algorithms
             Console.WriteLine($"\t\tSINGLY LINKED LIST: {sllAvg} ticks");
         }
 
-        [Benchmark]
+        //[Benchmark]
         public static void InsertionSortList(List<int> list)
         {
             for (int i = 1; i < list.Count; i++)
@@ -101,8 +101,6 @@ namespace DSnA.Algorithms
                 list[j + 1] = current;
             }
         }
-
-        //[Benchmark]
         
         // [Benchmark]
         // SLL = Singly Linked List
@@ -148,7 +146,6 @@ namespace DSnA.Algorithms
             }
 
             sll.First = sorted;
-            //Console.WriteLine("Finished sorting");
         }
 
         public static int Compare(object a, object b)

@@ -16,17 +16,10 @@ namespace DSnA
             Stopwatch watch = new Stopwatch();
             Random rand = new Random();
 
-            double insertionLiTicks = 0;
-            double insertionSllTicks = 0;
             double insertionArrTicks = 0;
-
-            double bubbleLiTicks = 0;
-            double bubbleSllTicks = 0;
             double bubbleArrTicks = 0;
-
-            double heapLiTicks = 0;
-            double heapSllTicks = 0;
             double heapArrTicks = 0;
+            double mergeArrTicks = 0;
 
             for (int i = 0; i < iterations; i++)
             {
@@ -37,7 +30,8 @@ namespace DSnA
                 }
 
                 int[] bubbleArr = (int[])insertionArr.Clone();
-                int[] heapArr = (int[])insertionArr.Clone();                
+                int[] heapArr = (int[])insertionArr.Clone();
+                int[] mergeArr = (int[])insertionArr.Clone();
 
                 //List<int> li = insertionArr.ToList();
                 //SinglyLinkedList sll = SinglyLinkedList.CreateListFromArray(insertionArr);
@@ -60,6 +54,12 @@ namespace DSnA
                 heapArrTicks += watch.ElapsedTicks;
                 watch.Reset();
 
+                watch.Start();
+                Algorithms.MergeSortTest.MergeSort(mergeArr);
+                watch.Stop();
+                mergeArrTicks += watch.ElapsedTicks;
+                watch.Reset();
+
                 //watch.Start();
                 //InsertionSort.InsertionSortList(li);
                 //watch.Stop();
@@ -78,22 +78,28 @@ namespace DSnA
             double insertionArrAvg = insertionArrTicks / iterations;
             double bubbleArrAvg = bubbleArrTicks / iterations;
             double heapArrAvg = heapArrTicks / iterations;
+            double mergeArrAvg = mergeArrTicks / iterations;
 
             Console.WriteLine($"Total time to sort a randomized sample of {size} numbers {iterations} times with: ");
             Console.WriteLine($"\t\tINSERTION SORT: {insertionArrTicks} ticks");
             Console.WriteLine($"\t\tBUBBLE SORT: {bubbleArrTicks} ticks");
-            Console.WriteLine($"\t\tHEAP SORT: {heapArrTicks} ticks\n");
+            Console.WriteLine($"\t\tHEAP SORT: {heapArrTicks} ticks");
+            Console.WriteLine($"\t\tMERGE SORT: {mergeArrTicks} ticks\n");
 
             Console.WriteLine($"AVERAGE time to sort {size} numbers with: ");
             Console.WriteLine($"\t\tINSERTION SORT: {insertionArrAvg} ticks");
             Console.WriteLine($"\t\tBUBBLE SORT: {bubbleArrAvg} ticks");
-            Console.WriteLine($"\t\tHEAP SORT: {heapArrAvg} ticks\n");
+            Console.WriteLine($"\t\tHEAP SORT: {heapArrAvg} ticks");
+            Console.WriteLine($"\t\tMERGE SORT: {mergeArrAvg} ticks\n");
+
 
             double percentInsertionBubble = 100 * (insertionArrAvg / bubbleArrAvg);
             double percentInsertionHeap = 100 * (insertionArrAvg / heapArrAvg);
+            double percentInsertionMerge = 100 * (insertionArrAvg / mergeArrAvg);
 
             Console.WriteLine($"Insertion Sort took {percentInsertionBubble}% as much time to perform as Bubble Sort.");
             Console.WriteLine($"Insertion Sort took {percentInsertionHeap}% as long to perform as Heap Sort.");
+            Console.WriteLine($"Insertion Sort took {percentInsertionMerge}% as long to perform as Merge Sort.");
 
         }
 
