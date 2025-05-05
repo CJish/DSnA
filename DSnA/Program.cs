@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
+using DSnA.DataStructures;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
 using System.Diagnostics;
 
@@ -8,8 +9,16 @@ namespace DSnA
     {
         static void Main(string[] args)
         {
-            CompareAll.CompareAllSorts(100, 20000);
-            //InsertionSort.InsertionSortCompare(100, 10000);
+            CompareAll.CompareAllSorts(100, 100000);
+
+
+
+
+
+
+
+
+
 
             //// Riley contributed the code below this line
             //Console.WriteLine("Algorithms Performance Test\n");
